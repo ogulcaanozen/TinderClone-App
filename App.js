@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { View, StyleSheet} from "react-native";
+import Card from "./src/components/TinderCard";
+import users from "./assets/data/users";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+import AnimatedStack from './src/components/AnimatedStack';
+
+
+const App = () =>{
+
+  const onSwipeLeft = user => {
+    console.warn('swipe left', user.name);
+  }
+
+  const onSwipeRight = user => {
+    console.warn('swipe right', user.name);
+  }
+
+  return(
+    
+    <View style={styles.pageContainer}>
+      <AnimatedStack
+        data={users}
+        renderItem={({item})=> <Card user={item} />}
+        onSwipeLeft={onSwipeLeft}
+        onSwipeRight={onSwipeRight}
+      />
+      
+
+    </View>  
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+const styles=StyleSheet.create({
+  pageContainer: {
     justifyContent: 'center',
+    alignItems: 'center',
+    flex:1
   },
+  
 });
+
+export default App;
