@@ -1,2 +1,2 @@
 # TinderClone-App
-This is a clone app of Tinder developed using React Native.
+This is a clone mobile app of Tinder developed using React Native.
